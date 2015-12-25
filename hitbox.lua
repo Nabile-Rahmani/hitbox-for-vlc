@@ -1,4 +1,5 @@
 -- Hitbox for VLC.
+-- Visit https://bitbucket.org/Nabile/hitbox-for-vlc for updates.
 
 --[[
 
@@ -23,8 +24,8 @@ function parse()
         local videoID = vlc.path:match("[%w+.]?hitbox.tv/video/([0-9]+)")
 
         return { { path = vlc.access .. "://www.hitbox.tv/api/player/hlsvod/" .. videoID .. ".m3u8" } }
-    elseif string.match(vlc.path, "[%w+.]?hitbox.tv/[A-Za-z0-9_]+") then
-        local channel = vlc.path:match("[%w+.]?hitbox.tv/([A-Za-z0-9_]+)")
+    elseif string.match(vlc.path, "[%w+.]?hitbox.tv/[A-Za-z0-9_-]+") then
+        local channel = vlc.path:match("[%w+.]?hitbox.tv/([A-Za-z0-9_-]+)")
 
         return { { path = vlc.access .. "://api.hitbox.tv/player/hls/" .. channel .. ".m3u8", title = channel .. "'s stream" } }
     end
